@@ -1,0 +1,574 @@
+/*
+Theme Name: omalamo V.1
+Theme URL: http://omalamo.com
+Author: James O'Malley
+Author URL: http://omalamo.com
+
+Based on the work of Yoen Schoen(sp)
+
+Dev notes: To do lots! IE, Retina.... 
+*/
+
+/*
+Colors
+-----------------
+Black: #313131
+Red: #903f32
+Grey (borders and 2ndary): #a1a1a1
+background:rgba(144, 63, 40, .23); (for slider panel)
+*/
+
+@charset "UTF-8";
+
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Reset
+---------------------------------------------------------------------------------------------------------- 
+*/
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;margin:0;padding:0;}
+table{border-collapse:separate;border-spacing:0;margin-bottom:1.4em;}
+caption,th,td{text-align:left;font-weight:400;}
+a img{border:0 none;}
+
+
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Main Layout
+---------------------------------------------------------------------------------------------------------- 
+*/
+
+html, body							{ height:100%; width:100%;}
+body								{ background-color:white; background: #fff url(../jomodo-pat.jpg) repeat; margin:auto;overflow-y: scroll;}
+/*.wrapper							{ display:table; width:100%; height:100%; margin:auto; }*/
+.cell								{ display:table-cell; width:100%; vertical-align:middle; position:relative; }
+header 								{ display: block; border-bottom:1px solid #a1a1a1; width:100%;overflow:hidden;}
+footer .wrapper						{ display: block; border-top:1px solid #a1a1a1; width:100%;}
+.page								{ min-width:600px; max-width: 1183px; width:96%; margin-left:auto; margin-right:auto; padding: 5.5em 4px; position:relative }
+
+img									{ width: auto; max-width: 100%; height: auto; margin: 0 auto;
+display: block;}				
+
+#map-canvas img	{max-width:none;}
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Typography
+---------------------------------------------------------------------------------------------------------- 
+*/
+
+body,
+input,
+textarea,
+button									{ font-size: 125%; line-height: 1.5; font-family:"museo-slab"; font-weight: 300; font-style:normal; color:#424242;}
+
+/* Styles */
+.strong 								{ font-weight:bold }
+.italic 								{ font-style:italic; font-family:Georgia, "Times New Roman", Times, serif; }
+.small 									{ font-size:0.688em }
+.smallest								{ font-size: 0.625em }
+blockquote 								{ margin: 1em; padding-left: 1em; border-left: 4px dotted #dfdfdf; font-style: italic; width: 50%; float:right; }
+.page figure							{margin:0 auto 1em auto;max-width:960px;position:relative;}
+.article figure							{margin:0;} 
+figcaption								{z-index: 9;position: absolute;font-size: 0.625em;right: 0.625em;}
+.page .article figcaption						{margin-top: -3em;}
+.page figcaption						{margin-top: -1em;}
+figcaption i							{font-family: Georgia, "Times New Roman", Times, serif; color:#903f32;}
+
+/* Headings */
+h1 				{ font-size:2em; text-align:center; letter-spacing: 0.113em; text-transform:uppercase;font-family:"jaf-domus-titling-web", sans-serif; font-weight: 400; font-style: normal;margin-bottom:0.8em;padding: 0 1em;color:#903f32;}
+h2 				{ font-size:1.5em; line-height: 1.2;  letter-spacing: -0.032em; margin-bottom:0.688em; font-family:"jaf-domus-titling-web", sans-serif; font-weight: 400; font-style: normal; text-transform:uppercase; color:#903f32;}
+/*.page h2	{text-align:center;}*/
+.slider h2		{padding:0; margin-bottom: 0;font-size:1.125em;}
+.tags h2 		{font-size:1.125em;float:left;margin-right:1em;color:#424242;}
+#resume h2 		{font-size:1.125em;}
+h3 				{ font-family:"jaf-domus-titling-web", sans-serif; font-weight: 400; font-size:1.000em; margin-bottom:0.500em;}
+.slider h3		{color: #666666;text-transform:uppercase; font-size:0.625em; padding: 0 2em;}
+h4				{ font-size:0.688em;color:#903f32; }
+.case h3 {font-size:0.688em;}
+/* A */
+a											
+{ color:#616161; padding:0 1px; text-decoration:none; transition: color 0.2s ease-out; background-color:rgba(144, 63, 40, .05); transition: background-color 0.2s ease-out; }
+a:hover, .nav li a:hover 								
+{color:#903f32; background-color:rgba(144, 63, 40, .5); transition: background-color 5s ease-out; }
+
+p				
+{font-size: 0.875em; padding: 0 7.813em 0.625em 7.813em;}
+
+
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Floats
+---------------------------------------------------------------------------------------------------------- 
+*/
+
+.left 									{ float:left; }
+.right				 					{ float:right; }
+.left-text 								{ text-align:left }
+.right-text 							{ text-align:right }
+.center-text 							{ text-align:center }
+.clear-left								{ clear: left; }
+.clear-right							{ clear: right; }
+.clear									{ clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0 }
+.clearfix:after							{ clear:both; content:''; display:block; font-size:0; line-height:0; visibility:hidden; width:0; height:0 }
+* html .clearfix,
+*:first-child+html .clearfix			{ zoom:1 }
+
+
+.pagenav							{ position: relative;}
+.pagenav p							{ padding: 0 0 0.625em 0; margin: auto 7.1813em;}
+.arrow								{ z-index: 10; position: absolute; top: 4.5em; display: block;color:#a1a1a1;background-color:transparent;font-size:1.25em; font-family:"jaf-domus-titling-web", Arial, Helvetica, sans-serif;transition:all 0.2s ease-out;}
+.pagenav 							{min-width: 600px;}
+.arrow.prev							{ left: 0; padding: 0.2em 1.5em 0.5em 1em;}
+.arrow.next							{ right: 0; padding: 0.2em 1em 0.5em 1.5em;}
+.arrow.up							{ top:1.5em; left: 50%; width: 80px; margin-left:-50px; padding: 0.5em 0.2em 0 0.2em; text-align:center; }
+a.arrow:hover						{ color:#903f32;background-color:transparent;transition:all 0.2s ease-out;}
+a.arrow.prev:hover 					{ padding-left: 0.5em;}
+a.arrow.next:hover 					{ padding-right: 0.5em;}
+a.arrow.up:hover 					{ padding-top:0; padding-bottom:0.5em;}
+a.arrow.up span						{display: inline-block; padding:0;margin-top: -4em;}
+a.arrow span						{visibility:hidden; padding: 0 0.5em;font-size:0.563em;}
+a.arrow:hover span					{ visibility:visible;}
+#scroll_to_top						{display:none;position:fixed; bottom:0.688em;right:0.688em;padding:0.688em; padding-bottom:1em;background-color:#313131;z-index:9; text-transform:uppercase;font-family:"jaf-domus-titling-web", sans-serif; font-weight: 200;}
+#scroll_to_top a					{color:#666;}
+#scroll_to_top a:hover						{ color:#903f32;}
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Navigation / lists
+---------------------------------------------------------------------------------------------------------- 
+*/
+
+ul									{list-style:none;padding-left:0;}
+
+/*Logo*/
+#logo 								{width: 33%; float: left;}
+#logo a								{padding:1px 0.3em; display:block; margin:auto;width: 197px; background: 0 50% repeat-x; }
+#logo a:hover						{transition:all ease-in 0.2s; background:rgba(144, 63, 40, .23) url(../dash-hr.png) 0 50% repeat-x;}
+
+
+
+.nav-wrapper						{min-width:600px; max-width: 800px; margin: 0 auto; padding: 0.625em 0;}
+.nav 								{ width: 33%; margin: 0 auto; float:left; overflow:hidden;}
+.nav li 							{float: left; margin: 0.2em auto; z-index:1; width: 50%; text-align:center;}
+.nav li a 							{color:#323232;background-color:transparent;font-size: 0.688em; font-family:"jaf-domus-titling-web", Arial, Helvetica, sans-serif; text-align:center; text-transform:uppercase;font-style: normal;font-weight: 400; text-align:right;}
+.nav li a:hover						{background-color:transparent;}
+
+ul.social, ul.focus-list			{margin:0;padding:0.688em 0;text-align:center;}
+ul.download							{margin:0;padding:0;text-align:center;float:left;}
+ul.inline-center li					{text-align:center; display:inline-block;margin-top: 1em;}
+ul.download	 img {margin:0;}
+
+ul.social li						{padding:0; margin: 0.312em;border-radius:50%; background-color:#313131; height: 45px; width: 45px;transition: all 0.2s ease-out;}
+ul.download li						{position:relative;float:left;padding:0; margin: 0.312em 1em 0.312em 1em;border-radius:50%; background-color:#313131; height: 20px; width: 20px;transition: all 0.2s ease-out;}
+ul.social li:hover, ul.download li:hover			{cursor:pointer;background-color:#903f32;}
+ul.social li a, ul.download li a					{padding:2px 0 0 2px;margin:0;display:inline-block;background-color:transparent;}
+ul.download li a									{padding:1px 0 0 1px;}
+ul.social li a:hover, ul.download li a:hover		{background-color:transparent;}
+
+ul.download li a span {position:absolute; top:0; text-align:left;padding: 0 1em;font-size: 0.688em;font-family:"jaf-domus-titling-web", sans-serif; font-weight: 400; font-style: normal; text-transform:uppercase;width:3em;}
+ul.download li a:hover span {display:block;}
+
+ul.focus-list li a					{font-size:0.688em; letter-spacing: -0.032em; margin:0.563em; padding: 0.325em 0; font-family:"jaf-domus-titling-web", sans-serif; font-weight: 400; font-style: normal; text-transform:uppercase;background-color:transparent;border-top: 1px solid transparent;transition:all 0.2s ease-out;}
+ul.focus-list li a:hover, ul.focus-list li a.current			{border-top: 1px solid #868686;background-color:transparent;transition:all 0.2s ease-out;}
+
+dl.knowhow 							{overflow: hidden;margin-bottom: 1em;}
+div.tags							{margin-bottom:1em; padding:1em 0 0.5em 0; background: url("http://www.omalamo.com/assets/css/../dash-hr.png") 0 0 repeat-x, url("http://www.omalamo.com/assets/css/../dash-hr.png") 0 100% repeat-x;}
+ul.tags								{overflow:hidden;text-align:center;}
+ul.tags li							{float:left;margin-right:0.688em;margin-bottom:0.5em;background-color:#313131;color:#808080;font-weight:400;font-family:"jaf-domus-titling-web", sans-serif;text-decoration:none;margin-right:0.53333em; font-size:0.688em;line-height:1em;padding:0.6em 1em 0.8em 1em;}
+
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Other Elements
+---------------------------------------------------------------------------------------------------------- 
+*/
+
+/* HR */
+hr 								{ border:0; height:2px;background:url(../dash-hr.png) 0 0 repeat-x; margin: 2em 4em 2em 4em;}
+hr.smallmargin					{ margin:1em 0.5em 0.5em 0; }
+hr.smallhr 						{ width: 50px; margin: 1.500em auto  }
+hr.vert							{ border:0; margin:0; height:3.125em; background:url(../dash-vert) 50% 0 repeat-y; clear:both;}
+hr.titlehr						{ margin:0.500em 0; }
+
+
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Slider
+---------------------------------------------------------------------------------------------------------- 
+*/
+
+.slider	*			{transition: all 0.3s ease-in;}
+.slider				{ width: 100%; margin-left: auto; margin-right: auto; position: relative;}
+.slider .wrapper	{ background: url(../dash-hr.png) bottom repeat-x; padding:0.325em 0; margin-bottom: 0; position:relative;}
+.slider .wrapper .arrow { position:absolute; z-index:auto; top:0; padding:0;color:#903f32;}
+.slider .ux .wrapper .arrow {right:0;}
+.slider .vd .wrapper .arrow { left:0;}
+.slider h3		{color: #666666;text-transform:uppercase; font-size:0.625em; padding: 0;}
+.slider .panel		{ width: 50%; height: 560px; float:left;cursor:pointer;}
+.headscont			{position: absolute; left: 50%; margin-left: -324px; width:647px;z-index:99;}
+.heads				{position:absolute;opacity:0.75;}
+.heads.left			{left:0;}
+.heads.left		 	 {-moz-transform: scaleX(-1);
+        				-o-transform: scaleX(-1);
+        				-webkit-transform: scaleX(-1);
+        				transform: scaleX(-1);
+        				filter: FlipH;
+       				 -ms-filter: "FlipH";
+}
+.heads.right		{right:0;}
+.content			{margin-top: 230px; width: 100%; padding:0 10px;}
+.content.ux p		{padding: 0 0 0 50px; position: relative; top:-1em;}
+.content.vd p		{padding: 0 50px 0 0;position: relative; top:-1em;}
+.content p.headline	{position:absolute;top:10px;right:10px;padding-top:0;width:40%;font-size:2em;font-family:Georgia, "Times New Roman", Times, serif;font-style:italic;}
+.content.ux p.headline	{right:30px;}
+.content.vd p.headline	{left:30px;}
+.content.ux			{float: right; text-align:right;}
+.content.vd			{float: left;}
+/*.slider .content p, .slider .content button {display:none;}*/
+
+
+/******* Final state **********/
+.slider.uxexp .panel.ux {background-color: rgba(144, 63, 40, .28);width:100%;}
+.slider.uxexp .panel.ux .content {margin-top: 10px;}
+.slider.uxexp .panel.vd {display:none;}
+.slider.uxexp .headscont		{left: 0;}
+.slider.uxexp .heads.left	{opacity:0;}
+.slider.uxexp .heads.right	{left: 10%; opacity:1;}
+
+.slider.hoverux		{
+background: -moz-linear-gradient(left, rgba(144,63,50,0) 0%, rgba(144,63,50,0.33) 43%, rgba(144,63,50,0.33) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(144,63,50,0)), color-stop(43%,rgba(144,63,50,0.33)), color-stop(100%,rgba(144,63,50,0.33))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, rgba(144,63,50,0) 0%,rgba(144,63,50,0.33) 43%,rgba(144,63,50,0.33) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, rgba(144,63,50,0) 0%,rgba(144,63,50,0.33) 43%,rgba(144,63,50,0.33) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, rgba(144,63,50,0) 0%,rgba(144,63,50,0.33) 43%,rgba(144,63,50,0.33) 100%); /* IE10+ */
+background: linear-gradient(to right, rgba(144,63,50,0) 0%,rgba(144,63,50,0.33) 43%,rgba(144,63,50,0.33) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00903f32', endColorstr='#54903f32',GradientType=1 ); /* IE6-9 */}
+.content.vd.hoverux {opacity:0.2;}
+
+.slider.hovervd		{background: -moz-linear-gradient(left,  rgba(144,63,50,0.33) 0%, rgba(144,63,50,0.33) 57%, rgba(144,63,50,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(144,63,50,0.33)), color-stop(57%,rgba(144,63,50,0.33)), color-stop(100%,rgba(144,63,50,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  rgba(144,63,50,0.33) 0%,rgba(144,63,50,0.33) 57%,rgba(144,63,50,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  rgba(144,63,50,0.33) 0%,rgba(144,63,50,0.33) 57%,rgba(144,63,50,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  rgba(144,63,50,0.33) 0%,rgba(144,63,50,0.33) 57%,rgba(144,63,50,0) 100%); /* IE10+ */
+background: linear-gradient(to right,  rgba(144,63,50,0.33) 0%,rgba(144,63,50,0.33) 57%,rgba(144,63,50,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#54903f32', endColorstr='#00903f32',GradientType=1 ); /* IE6-9 */}
+.content.ux.hovervd {opacity:0.2;}
+
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Blog pages
+---------------------------------------------------------------------------------------------------------- 
+*/
+.article							{ min-width:600px; max-width: 800px; width:96%; margin-left:auto; margin-right:auto; padding: 1.5em 0; position:relative }
+.article img						{ margin: 2em 0;}	
+.related_content {margin: 0 auto; padding: 0 5em 0.625em 5em;font-size: 0.813em; max-width:800px;}
+.article h2 {padding:0;}
+.article p {padding: 0 0 0.625em 0;}
+.related_content h2 {padding:0;}
+.related_content ul {padding-top:1em;}
+.related_content ul li {padding-bottom:0.5em;}
+.related_content .left-col, .related_content .right-col {width:50%;}
+.related_content .left-col {float:left; text-align:left;}
+.related_content .right-col {float:right; text-align:right;}
+.article.toggle {display:none;}
+.article.toggle .wrapper {padding: 0 2em;}
+.readmore {cursor:pointer; background:transparent url(../dash-hr.png) 0 50% repeat-x;}
+
+.case-studies							{ min-width:450px; max-width: 1000px; width:96%; margin-left:auto; margin-right:auto; padding: 0; position:relative; overflow:hidden;}
+/*.case-studies p {font-size:0.813em;}*/
+.case-studies .case {width:100%;}
+.case		{overflow:hidden;margin-bottom:0.388em;}
+.case:last-child	{margin-bottom:0;}
+.case .thumb {width:30%;float:left;}
+.case .thumb img {display:inline;border: 5px solid #f8f8f8;width:auto;margin:0;}
+.case .desc {width:65%; float:left; padding-left:4%;}
+
+figure {margin:0; display:block;}
+figure.cycler{position:relative;}
+figure.cycler img{position:absolute;z-index:97}
+figure.cycler img.active{z-index:3}
+
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 About Panels
+---------------------------------------------------------------------------------------------------------- 
+*/
+.panels {display:none; padding-top:2em;}
+#hello 	{display:block;}
+.panels span.italic {margin-right: 0.2em;}
+.panels p.italic {font-size:1em; color:#903f32;padding-bottom:0.313em;}
+
+/*
+------------------
+Resume
+------------------
+*/
+#resume									{ min-width:600px; max-width: 960px; width:96%; margin-left:auto; margin-right:auto; padding: 1.5em 0; position:relative }
+#resume .left-col 						{width:66%; float: left;}
+#resume .right-col 						{width:30%; float: right;}
+#resume .left-col .item 				{position:relative;margin-bottom:0.325em;}
+#resume p 								{font-size: 0.813em; padding:0 0 0.625em 0;clear: both;} 
+#resume .left-col ul, #resume .right-col ul								 {font-size: 0.688em; padding:0 0 0.625em 0;list-style:outside disc;} 
+#resume .right-col p 					{ font-size: 0.688em; line-height:1.6em; }
+#resume ul.geo-chrono 							{position:absolute; top:0; left:-160px;font-size:0.688em;padding-top: 0.325em;list-style:none;}
+li.geo									{font-family:"jaf-domus-titling-web", sans-serif; font-weight: 400; font-style: normal;}
+#resume h3 								{font-size:0.825em; clear:both;}
+#resume .left-col h3 					{margin-bottom:0;} 
+#resume dl dt 							{overflow:hidden;margin-bottom:2px;font-size:0.688em;}
+#resume dl dd 							{width:100%;overflow:hidden;margin-bottom:2px;font-size:0.688em; color:#903f32; padding: 0.2em 0 0.2em 0.2em;background:url('../resume-bar-bg.jpg') 100% 0 repeat-x;}
+#resume dl dd.hi-ad						{width:99%;}
+#resume dl dd.adv						{width:79%;}
+#resume dl dd.gd						{width:56%;}
+#resume dl dd.ade						{width:39%;}
+#resume dl dd.bas						{width:19%;}
+
+
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Thumb lists
+---------------------------------------------------------------------------------------------------------- 
+*/
+
+.thumb-list						{padding:0.313em 0; margin: auto; max-width: 1083px; background:url(../dash-zigzag.png) repeat;}
+.thumb-list .item				{float:left; width: 215px; height: 247px; /*overflow:hidden;*/}
+
+.thumb-list p 					{font-size:0.688em; text-align:center; padding: 0.312em 1em 0 1em; opacity:0.8;}
+.thumb-list .thumb				{position: relative; overflow: hidden; border-radius:50%; width: 175px; height: 175px; border: 5px solid #f8f8f8; background-color:#CCC; margin: 27px auto 0 auto; background-repeat:no-repeat;}
+.thumb-list .thumb img						{border-radius:50%;display:inline;}
+.thumb-list .thumb img, .case img			{ filter: grayscale(90%);
+											-webkit-filter: grayscale(90%);
+											-moz-filter: grayscale(90%);
+											filter: grayscale(90%);
+											transform: translateZ(0);
+											-webkit-transform: translateZ(0);
+											-moz-transform: translateZ(0);
+											}
+.thumb .category				{border-radius:50%; width: 175px; height: 175px; position: absolute;top:0;opacity:0; background-color:#903; color:#ffffff;text-align:center;line-height:175px;text-transform:uppercase; font-size: 0.625em; letter-spacing:0.032em;}
+.thumb .category a {color:#fff;border-radius:50%; width: 175px; height: 175px;display:inline-block;}
+
+/* --------- TRANSITIONS ------------ */
+.thumb .category					{transition:opacity 200ms linear;}
+.thumb img, .case img							{transition:all 0.25s;}
+.thumb-list p						{transition:opacity 200ms linear 500ms;}
+.item:hover .thumb					{cursor:pointer;}
+.item:hover .thumb .category		{bottom: -5px; opacity:0.8;}
+.item .thumb						{transition:all 0.5s;}
+.thumb-list .item:hover .thumb, .case:hover img		{border: 5px dotted #dfdfdf;}
+.thumb-list .item:hover .thumb img, .case:hover img	{filter: grayscale(0%);
+											-webkit-filter: grayscale(0%);
+											-moz-filter: grayscale(0%);
+											filter: grayscale(0%);
+											}
+.thumb-list .item:hover p 			{opacity:1;}
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Square lists
+---------------------------------------------------------------------------------------------------------- 
+*/
+
+.square-list					{padding:0.313em 0; margin: auto; max-width: 1083px; background:url(../dash-zigzag.png) repeat;}
+.square-list .item				{float:left; overflow:hidden;}
+
+.square-list p 					{font-size:0.625em; text-align:left; padding: 0.312em;}
+
+
+
+
+
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Contact Form
+---------------------------------------------------------------------------------------------------------- 
+*/
+form.omal-form {padding:0 0 0.625em 0;}
+
+.omal-form .form-row:before, .omal-form .form-row:after		{content:" ";display:table}
+.omal-form .form-row:after									{clear:both}
+.omal-form .form-row										{margin-bottom:1.2em;}
+.omal-form label,.omal-form .label,.omal-form input			{display:block}
+.omal-form legend, .omal-form label, .omal-form .label		{font-size:0.750em;}
+.omal-form .legend											{display:block;margin-bottom:0.8em}
+.omal-form .legend span										{}
+.omal-form fieldset											{*zoom:1;padding:1em 0em 1em 0em}
+.omal-form fieldset:before, .omal-form fieldset:after		{content:" ";display:table}
+.omal-form fieldset:after									{clear:both}
+.omal-form fieldset .form-row:last-child					{margin-bottom:0}
+.omal-form textarea, .omal-form input[type="email"], .omal-form input[type="text"]	{box-sizing:border-box;width:100%;border:none;font-size:0.75em;color:#6f706c;padding:0 0 0.375em 0; border-bottom: 1px dashed #999;background:none;}
+
+.omal-form textarea:focus,
+.omal-form input[type="email"]:focus,
+.omal-form input[type="text"]:focus							{outline:none; border-bottom:solid 1px #903f32}
+
+.omal-form textarea.error,
+.omal-form input[type="email"].error,
+.omal-form input[type="text"].error							{border-bottom:solid 1px #C00;} 
+.omal-form textarea											{height:10em;padding:0 0 0.375em 0;line-height:1.8;background: transparent url('http://www.omalamo.com/assets/dash-form8.png') 0 -3px repeat;resize: none;}
+button, a.button, .button											{display:inline-block;border:solid 2px #a1a1a1;background-color:#DBDBDB;color:#903f32;font-weight:400;font-family:"jaf-domus-titling-web", sans-serif;text-decoration:none;margin-right:0.53333em; font-size:0.688em;line-height:1em;padding:0.6em 1em 0.8em 1em;transition: border 0.2s ease-in;}
+.readmore .button {margin: 0 auto 2em auto;display: block;width: 10em;text-align: center;}
+.readmore .button.hide {display:none;}
+
+.omal-form button {font-size:1.125em;line-height:1.125em;padding:0.8em 2em 1em 2em;float:left;}
+
+button:hover, a.button:hover, .button:hover					{border:solid 2px #903f32;transition: border 0.2s ease-out;}
+.omal-form .basic-details									{*zoom:1}
+.omal-form .basic-details:before, .omal-form .basic-details:after{content:" ";display:table}
+.omal-form .basic-details:after								{clear:both}
+.omal-form .basic-details .input-group						{float:left;width:47%}
+.omal-form .basic-details .input-group:first-child			{margin-right:6%}
+.omal-form .how-help .input-group							{float:left;width:22.5%;margin-right:3%;margin-bottom:0.9375em}
+.omal-form #omal-message-label								{display:none}
+
+
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 FIZZY
+---------------------------------------------------------------------------------------------------------- 
+*/
+
+
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/**** Isotope filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Media Queries
+---------------------------------------------------------------------------------------------------------- 
+*/
+
+@media only screen and (max-width: 1085px){
+#resume ul.geo-chrono {position:static;padding-top:0;padding-bottom: 0.325em;overflow: hidden;}
+#resume ul.geo-chrono li {float:left; margin-right:1em;}
+li.geo {font-family:inherit;}	
+}
+
+@media only screen and (max-width: 600px){
+header 								{ display: block; border-bottom:1px solid #a1a1a1; position:fixed; width:100%; background: #fff url(../jomodo-pat.jpg) repeat; z-index:1000;}
+
+p, .article p, .page p						{padding: 0 0 0.625em 0;}
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Slider
+*/
+body							{overflow-y:auto}
+.headscont, .slider					{display:none;}
+
+/*Logo*/
+#logo								{position:absolute;float:none;left: 50%; margin-left:-72px;}
+#logo a								{width: 148px;}
+
+.nav-wrapper						{min-width: 320px; max-width:600px;}
+.nav 								{ width: 50%; margin-top:25px; font-size:125%;}
+
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Main Layout
+*/
+
+.page								{ min-width:inherit;max-width: 600px; margin-left:auto; margin-right:auto; padding: 6.5em 4px; position:relative }
+.article 							{min-width:inherit;max-width: 600px;}
+.thumb-list .item					{float:none; margin:auto;width: 100%;}
+
+body,
+input,
+textarea,
+button									{ font-size: 100%; line-height: 1.5;}
+
+h2									{font-size:1.5em;}
+
+.related_content 						{padding:0 0 0.625em 0;}
+.related_content .left-col, .related_content .right-col {width:auto;float:none; text-align:center;}
+
+ul.focus-list li a						{font-size:0.825em;}
+
+hr									{margin:1em 2em 1em 1em;}
+
+.pagenav {
+min-width: 320px; 
+}
+
+.arrow				{color:#903f32; padding:0.2em 0.5em 1.5em 0.5em; top:5.5em;}
+
+.arrow span {display:none;}
+
+form.omal-form {padding:0 0 0.625em 0;}
+form.omal-form .basic-details .input-group {float:none;width:100%;margin:0;}
+.omal-form legend, .omal-form label, .omal-form .label {font-size:1em;}
+form.omal-form button {width:100%;margin-right:0;}
+/* 
+---------------------------------------------------------------------------------------------------------- 
+02 Resume
+*/
+#resume									{ min-width:inherit;max-width: 600px;}
+#resume .left-col 						{width:auto; float: none;}
+#resume .right-col 						{width:auto; float: none;}
+#resume ul.geo-chrono 					{position:inherit;top: 0;left: 0;}
+#resume dl dt 							{float: left; clear:left; width:25%;}
+#resume dl dd 							{float:left;width:75%;}
+#resume dl dd.hi-ad						{width:74%;}
+#resume dl dd.adv						{width:59%;}
+#resume dl dd.gd						{width:44%;}
+#resume dl dd.ade						{width:30%;}
+#resume dl dd.bas						{width:20%;}
+
+}
